@@ -1,0 +1,21 @@
+- name: Bootstrap development environment
+  hosts: localhost
+
+  tasks:
+    - name: Install packages with apt
+      become: yes
+      ansible.builtin.apt:
+        name:
+          - git
+          - tmux
+        state: present
+      when: ansible_distribution == "Ubuntu"
+   
+    - name: Install packages with dnf
+      become: yes
+      ansible.builtin.dnf:
+        name:
+          - git
+          - tmux
+        state: present
+      when: ansible_distribution == "Fedora"
