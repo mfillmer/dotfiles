@@ -2,7 +2,7 @@
   hosts: localhost
 
   roles:
-    - andrewrothstein.k9s
+    # - andrewrothstein.k9s
   tasks:
     - name: Install packages with apt
       become: yes
@@ -13,11 +13,16 @@
         state: present
       when: ansible_distribution == "Ubuntu"
    
-    - name: Install packages with dnf
-      become: yes
-      ansible.builtin.dnf:
-        name:
-          - git
-          - tmux
-        state: present
-      when: ansible_distribution == "Fedora"
+   # - name: Install packages with dnf
+   #   become: yes
+   #   dnf5:
+   #     name:
+   #       - git
+   #       - tmux
+   #     state: present
+   #   when: ansible_distribution == "Fedora"
+
+    - name: Run stow
+      shell: "stow dotfiles --verbose=2"
+      register: result
+      changed_when: 'result.stderr is search("LINK: ")'
