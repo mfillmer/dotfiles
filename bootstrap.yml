@@ -1,6 +1,8 @@
 - name: Bootstrap development environment
   hosts: localhost
 
+  roles:
+    - andrewrothstein.k9s
   tasks:
     - name: Install packages with apt
       become: yes
