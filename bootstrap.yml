@@ -8,19 +8,20 @@
       become: yes
       ansible.builtin.apt:
         name:
+          - stow   
           - git
           - tmux
         state: present
       when: ansible_distribution == "Ubuntu"
    
-   # - name: Install packages with dnf
-   #   become: yes
-   #   dnf5:
-   #     name:
-   #       - git
-   #       - tmux
-   #     state: present
-   #   when: ansible_distribution == "Fedora"
+    - name: Install packages with dnf
+      become: yes
+      dnf5:
+        name:
+          - git
+          - tmux
+        state: present
+      when: ansible_distribution == "Fedora"
 
     - name: Run stow
       shell: "stow dotfiles --verbose=2"
