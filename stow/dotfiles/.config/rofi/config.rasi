@@ -155,12 +155,4 @@ configuration {
   }
 }
 
-//@theme "/home/malte/.local/share/rofi/themes/nord-oneline.rasi"
-
-//@theme "/home/malte/.local/share/rofi/themes/rounded-nord-dark.rasi"
-
-//@theme "/home/malte/.local/share/rofi/themes/spotlight-dark.rasi"
-
-//@theme "/home/malte/.local/share/rofi/themes/nord-oneline.rasi"
-
-@theme "/home/malte/.local/share/rofi/themes/rounded-nord-dark.rasi"
+@theme "./themes/rounded-nord-dark.rasi"
