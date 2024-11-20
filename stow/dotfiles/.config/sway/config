@@ -27,6 +27,8 @@ set $rofi_cmd rofi \
 # TODO: add window with the next release of rofi-wayland
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi -display-combi "run"
 
+set $websearch xdg-open "https://www.google.com/search?q="$(rofi -dmenu -p "Google: ") &
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -91,6 +93,9 @@ input * {
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    
+    # Start your launcher
+    bindsym $mod+g exec $websearch
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
