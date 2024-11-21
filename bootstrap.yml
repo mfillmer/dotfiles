@@ -8,6 +8,7 @@
       become: yes
       ansible.builtin.apt:
         name:
+          - cargo
           - stow   
           - git
           - tmux
@@ -18,11 +19,23 @@
       become: yes
       dnf5:
         name:
+          - cargo
+          - stow   
           - git
           - tmux
         state: present
       when: ansible_distribution == "Fedora"
 
+
+    - name: Install "yazi" Rust package with locked dependencies
+      community.general.cargo:
+        name: yazi-fm
+        locked: true
+    - name: Install "ludusavi" Rust package with locked dependencies
+      community.general.cargo:
+        name: yazi-cli
+        locked: true
+    
     - name: Run stow
       shell: "stow dotfiles --verbose=2"
       register: result
