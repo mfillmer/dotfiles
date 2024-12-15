@@ -1,3 +1,5 @@
+if [ -e /home/malte/.nix-profile/etc/profile.d/nix.sh ]; then . /home/malte/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -77,7 +79,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git timewarrior)
+plugins=(git timewarrior nix-zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,5 +115,15 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+source <(fzf --zsh)
 
-if [ -e /home/malte/.nix-profile/etc/profile.d/nix.sh ]; then . /home/malte/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+

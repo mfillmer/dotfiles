@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="file:///home/malte/Downloads/Tape_Hook.3mf" added="2024-12-12T15:35:53.116251Z" modified="2024-12-12T15:35:53.116254Z" visited="2024-12-12T15:35:53.116252Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="model/3mf"/>
+        <bookmark:applications>
+          <bookmark:application name="prusa-slicer.wrapped" exec="&apos;prusa-slicer.wrapped %u&apos;" modified="2024-12-12T15:35:53.116253Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/malte/Downloads/Parametric%20Wall%20Hook%20Medium.3mf" added="2024-12-12T15:35:53.116258Z" modified="2024-12-12T15:35:53.116259Z" visited="2024-12-12T15:35:53.116258Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="model/3mf"/>
+        <bookmark:applications>
+          <bookmark:application name="prusa-slicer.wrapped" exec="&apos;prusa-slicer.wrapped %u&apos;" modified="2024-12-12T15:35:53.116258Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/malte/projects/panto-brille-hinge-gap-0.16.3mf" added="2024-12-12T15:35:53.116261Z" modified="2024-12-12T15:35:53.116262Z" visited="2024-12-12T15:35:53.116261Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="model/3mf"/>
+        <bookmark:applications>
+          <bookmark:application name="prusa-slicer.wrapped" exec="&apos;prusa-slicer.wrapped %u&apos;" modified="2024-12-12T15:35:53.116261Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/malte/Downloads/Nespresso-Essenza_U-shape_caps.3mf" added="2024-12-12T15:35:53.116264Z" modified="2024-12-12T15:35:53.116265Z" visited="2024-12-12T15:35:53.116264Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="model/3mf"/>
+        <bookmark:applications>
+          <bookmark:application name="prusa-slicer.wrapped" exec="&apos;prusa-slicer.wrapped %u&apos;" modified="2024-12-12T15:35:53.116265Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/malte/projects/cad_glasses/panto_0.25.3mf" added="2024-12-12T15:35:53.116267Z" modified="2024-12-12T15:35:53.116268Z" visited="2024-12-12T15:35:53.116267Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="model/3mf"/>
+        <bookmark:applications>
+          <bookmark:application name="prusa-slicer.wrapped" exec="&apos;prusa-slicer.wrapped %u&apos;" modified="2024-12-12T15:35:53.116268Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/malte/projects/cad_glasses/panto.3mf" added="2024-12-12T15:35:53.116271Z" modified="2024-12-12T15:35:53.116271Z" visited="2024-12-12T15:35:53.116271Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="model/3mf"/>
+        <bookmark:applications>
+          <bookmark:application name="prusa-slicer.wrapped" exec="&apos;prusa-slicer.wrapped %u&apos;" modified="2024-12-12T15:35:53.116271Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/malte/projects/cad_glasses/measure_templates.3mf" added="2024-12-12T15:35:53.116274Z" modified="2024-12-12T15:35:53.116274Z" visited="2024-12-12T15:35:53.116274Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="model/3mf"/>
+        <bookmark:applications>
+          <bookmark:application name="prusa-slicer.wrapped" exec="&apos;prusa-slicer.wrapped %u&apos;" modified="2024-12-12T15:35:53.116274Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/malte/projects/s-hook.3mf" added="2024-12-12T15:35:53.116278Z" modified="2024-12-12T15:35:53.116278Z" visited="2024-12-12T15:35:53.116278Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="model/3mf"/>
+        <bookmark:applications>
+          <bookmark:application name="prusa-slicer.wrapped" exec="&apos;prusa-slicer.wrapped %u&apos;" modified="2024-12-12T15:35:53.116278Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/malte/Downloads/3mf_3c_sheep.3mf" added="2024-12-12T15:35:53.116281Z" modified="2024-12-12T15:35:53.116281Z" visited="2024-12-12T15:35:53.116281Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="model/3mf"/>
+        <bookmark:applications>
+          <bookmark:application name="prusa-slicer.wrapped" exec="&apos;prusa-slicer.wrapped %u&apos;" modified="2024-12-12T15:35:53.116281Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>
