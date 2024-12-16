@@ -1,0 +1,192 @@
+- hosts: all 
+  connection: local
+  tasks:
+    - name: Save username
+      shell: whoami
+      register: username
+    - name: hint for possible fingerprint sensors
+      debug: 
+        # Ansible does not support Multi Factor Auth and does not plan to do so
+        # https://blog.guillaumea.fr/draft/ansible_fingerprint_reader/
+        msg: "Remember to authenticate with fingerprint when gathering facts if you have a sensor on this device."
+
+
+- hosts: all
+  connection: local
+  become: true
+  tasks:
+    - name: Add VSCode repository
+      yum_repository:
+        name: vscode
+        description: VSCode YUM Repo
+        baseurl: https://packages.microsoft.com/yumrepos/vscode
+        gpgcheck: yes
+        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+
+    - name: Install dnf plugins
+      dnf:
+        name: dnf-plugins-core
+        update_cache: yes
+        state: present
+
+    - name: Install applications
+      dnf:
+        name: 
+          - vim
+          - gnome-tweak-tool
+          - htop
+          - code
+        update_cache: yes
+        state: present
+
+    - name: Install language tools
+      dnf:
+        name: ["golang-bin", "rust", "cargo", "nodejs", "python3-devel"]
+        update_cache: yes
+        state: present
+
+    - name: Install dev tools
+      dnf:
+        name: ["docker", "python3-virtualenv", "libpq-devel"]
+        update_cache: yes
+        state: present
+
+- hosts: all 
+  connection: local
+  tasks:
+
+    - name: Ensure .ssh directory exists.
+      file:
+        dest: "~/.ssh"
+        mode: 0700
+        owner: "{{ ansible_user_id }}"
+        state: directory
+
+    - name: Install private ssh key
+      copy:
+        src: files/id_rsa.vault
+        dest: "~/.ssh/id_rsa"
+        decrypt: yes
+        mode: 0600
+        owner: "{{ ansible_user_id }}"
+
+    - name: Install work ssh key
+      copy:
+        src: files/id_rsa_work.vault
+        dest: "~/.ssh/id_rsa_work"
+        decrypt: yes
+        mode: 0600
+        owner: "{{ ansible_user_id }}"
+
+    - name: Copy public keys
+      copy:
+        src: "files/{{ item }}"
+        dest: "~/.ssh/{{ item }}"
+        decrypt: yes
+        mode: 0600
+        owner: "{{ ansible_user_id }}"
+      with_items:
+        - id_rsa.pub
+        - id_rsa_work.pub
+
+    - name: Create some directories
+      file:
+        path: "~/{{ item }}"
+        state: directory
+      with_items:
+        - work
+        - projects
+        - code
+        - ".aws"
+
+    - name: Copy aws config
+      copy:
+        src: "files/aws-{{ item }}.vault"
+        dest: "~/.aws/{{ item }}"
+        decrypt: yes
+        mode: 0600
+        owner: "{{ ansible_user_id }}"
+      with_items:
+        - config
+        - credentials
+
+    # Replace with repos for work
+    # - name: Check out work repos
+    #   git:
+    #     repo: "{{ item.repo }}"
+    #     dest: "~/work/{{ item.directory }}"
+    #     accept_hostkey: yes
+    #   ignore_errors: yes
+    #   with_items:
+    #     - { repo: "git@github.com:work-company/product.git", directory: "product" }
+    #     - { repo: "git@github.com:work-company/tooling.git", directory: "tooling" }
+
+    # Replace with your personal project repos
+    - name: Check out project repos
+      git:
+        repo: "{{ item.repo }}"
+        dest: "~/projects/{{ item.directory }}"
+        accept_hostkey: yes
+      ignore_errors: yes
+      with_items:
+        - { repo: "git@github.com:mfillmer/cad-query-models", directory: "cad-query-models" }
+
+    - name: Add the flathub flatpak repository remote to the user installation
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+        method: user
+
+    - name: Install software from flatpak
+      community.general.flatpak:
+        name: "{{ item }}"
+        state: present
+        method: user
+      with_items:
+        - org.signal.Signal
+        - com.spotify.Client
+
+    # - name: Remap capslock to escape
+    #   community.general.dconf:
+    #     key: "/org/gnome/desktop/input-sources/xkb-options"
+    #     value: "['caps:escape']"
+    #     state: present
+
+    # - name: Remove super-s keybinding
+    #   community.general.dconf:
+    #     key: "/org/gnome/shell/keybindings/toggle-overview"
+    #     value: "@as []"
+    #     state: present
+
+    - name: Install cargo packages
+      command: "cargo install yazi"
+      args:
+        creates: "/home/{{ username.stdout }}/.cargo/bin/tldr"
+
+    - name: Install goimports
+      command: go get golang.org/x/tools/cmd/goimports
+      args:
+        creates:
+          - "/home/{{ username.stdout }}/go/bin/goimports"
+
+    # # Replace Your Username with your username
+    # # - name: Configure git username
+    #   community.general.git_config:
+    #     name: user.name
+    #     scope: global
+    #     value: username
+
+    # # Replace your@email with your email
+    # - name: Configure git email
+    #   community.general.git_config:
+    #     name: user.email
+    #     scope: global
+    #     value: your@email
+
+    # Remove if you want to keep nano
+    - name: Configure git editor
+      community.general.git_config:
+        name: core.editor
+        scope: global
+        value: vim
