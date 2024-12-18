@@ -1,0 +1,12 @@
+# Ansible playbook for configuring gnome
+
+- hosts: all
+  become: true
+  tasks:
+    - name: install stow
+      dnf5:
+        name: 
+          - stow 
+    # - name: link dotfiles
+    # - name: install packages
+    # - name: configure gnome
