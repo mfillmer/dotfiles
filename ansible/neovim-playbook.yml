@@ -1,0 +1,35 @@
+# Ansible playbook for configuring neovim 
+
+- hosts: all 
+  connection: local
+  tasks:
+    - name: Save username
+      shell: whoami
+      register: username
+    - name: hint for possible fingerprint sensors
+      debug: 
+        # Ansible does not support Multi Factor Auth and does not plan to do so
+        # https://blog.guillaumea.fr/draft/ansible_fingerprint_reader/
+        msg: "Remember to authenticate with fingerprint when gathering facts if you have a sensor on this device."
+
+
+- hosts: all
+  become: true
+  tasks:
+    - name: install packages 
+      dnf:
+        name: 
+          - stow 
+          - neovim 
+    - name: prepare directories for stowing files
+      ansible.builtin.file:
+        path: "{{item}}"
+        state: directory
+      loop:
+        - "/home/{{username.stdout}}/.neovim"
+    - name: stow files
+      shell: |
+        cd /home/{{ username.stdout }}/dotfiles
+        stow neovim --dotfiles --verbose=2
+      register: result
+      changed_when: 'result.stderr is search("LINK: ")'

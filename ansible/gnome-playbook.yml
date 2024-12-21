@@ -44,6 +44,8 @@
         - {key: /org/gnome/desktop/interface/cursor-theme, value: "'Nordzy-cursors'"}
         - {key: /org/gnome/desktop/interface/gtk-theme, value: "'Nordic-v40'"}
         - {key: /org/gnome/desktop/interface/icon-theme, value: "'Nordic-Folders'"}
+    - name: update dconf
+      shell: dconf update
     # - name: link dotfiles
     # - name: install packages
     # - name: configure gnome
