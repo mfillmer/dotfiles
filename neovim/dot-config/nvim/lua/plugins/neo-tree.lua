@@ -9,6 +9,6 @@ return {
     }, 
     config = function()
 		vim.keymap.set("n", "<C-e>", ":Neotree filesystem reveal left<CR>", {})
-		vim.keymap.set("n", "<Tab>", ":Neotree buffers reveal float<CR>", {})
+		vim.keymap.set("n", "<C-b>", ":Neotree buffers reveal float<CR>", {})
     end
 }
