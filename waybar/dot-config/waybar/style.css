@@ -7,7 +7,6 @@ window {
 * {
     font-family: Cantarell;
     font-size: 14px;
-    font-weight: 600;
     margin-top: 2px;
 }
 
@@ -18,19 +17,27 @@ window {
     color: @nord0;
     background-color: @nord13;
     margin-left: 8px;
-    border-radius: 5px;
     padding: 0px 6px;
+    border-radius: 0px;
 }
 
 #workspaces button {
-    margin-left: 8px;
     background-color: @nord3;
     padding: 0px 4px;
     color: @nord6;
+    border-radius: 0px;
     margin-top: 0;
 }
 
-#workspaces button.focused {
+/*
+* Left end of right part
+*/
+#workspaces button:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#workspaces button.focused, #workspaces button.active {
     color: @nord0;
     background-color: @nord8;
 }
@@ -53,30 +60,26 @@ window {
 #language,
 #custom-power,
 #battery,
+#temperature,
+#power-profiles-daemon,
+#tuned,
+#idle_inhibitor,
 #clock,
 #tray {
     background-color: @nord2;
-    padding: 0px 8px;
+    padding: 0px 4px;
     color: @nord6;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
-#backlight,
-#language,
-#custom-power,
-#battery,
-#clock,
-#tray {
-    margin-right: 8px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-#pulseaudio,
-#network,
-#clock,
-#tray {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+/*
+* Left end of right part
+*/
+#idle_inhibitor {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-left: 8px;
 }
 
 #pulseaudio.muted {
@@ -86,14 +89,6 @@ window {
 
 #pulseaudio, #backlight {
     background-color: @nord10;
-}
-
-#network, #cpu, #memory, #battery {
-    background-color: @nord3;
-}
-
-#tray {
-    background-color: @nord1;
 }
 
 #network.disabled, 
