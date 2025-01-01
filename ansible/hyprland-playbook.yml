@@ -6,6 +6,11 @@
     - name: Save username
       shell: whoami
       register: username
+    - name: hint for manual tasks
+      debug: 
+        # Ansible does not support Multi Factor Auth and does not plan to do so
+        # https://blog.guillaumea.fr/draft/ansible_fingerprint_reader/
+        msg: "Remember to set chrome://flags/#ozone-platform-hint to wayland on chrome browsers"
     - name: hint for possible fingerprint sensors
       debug: 
         # Ansible does not support Multi Factor Auth and does not plan to do so
